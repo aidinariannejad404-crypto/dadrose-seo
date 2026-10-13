@@ -1,0 +1,128 @@
+From 2ebe57ced8c5f402ed81d64e3861a17b5f172215 Mon Sep 17 00:00:00 2001
+From: aydin <aidinariannejad404@gmail.com>
+Date: Tue, 13 Oct 2026 15:47:57 +0000
+Subject: [PATCH 1/2] seo: noindex login/offline and add exam-night load test
+
+/login and /offline get a robots noindex meta (not a robots.txt Disallow,
+so crawlers can still see the noindex). Adds a k6 script that load-tests
+the anonymous public routes and /api/v1/health without sending OTP SMS.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MUiCKToLs51ZdvifJNEamM
+---
+ frontend/scripts/loadtest/exam-night.k6.js | 48 ++++++++++++++++++++++
+ frontend/src/app/login/page.tsx            |  3 +-
+ frontend/src/app/offline/page.tsx          |  2 +-
+ 3 files changed, 51 insertions(+), 2 deletions(-)
+ create mode 100644 frontend/scripts/loadtest/exam-night.k6.js
+
+diff --git a/frontend/scripts/loadtest/exam-night.k6.js b/frontend/scripts/loadtest/exam-night.k6.js
+new file mode 100644
+index 0000000..49cf949
+--- /dev/null
++++ b/frontend/scripts/loadtest/exam-night.k6.js
+@@ -0,0 +1,48 @@
++// Exam-night load test for azmoon.dadrose.com (public pages + API health).
++// Companion to the dadrose.com test in the SEO repo (seo/seo-research/10-urgent-pre-exam/).
++//
++//   k6 run -e MODE=smoke frontend/scripts/loadtest/exam-night.k6.js
++//   k6 run -e BASE=https://staging.azmoon.dadrose.com -e PEAK=200 frontend/scripts/loadtest/exam-night.k6.js
++//
++// Only anonymous, read-only routes are hit; no OTP is requested and no attempt is created,
++// so the test never sends SMS or writes to the database. Run in a quiet hour and tell the host.
++
++import http from "k6/http";
++import { check, sleep } from "k6";
++
++const BASE = (__ENV.BASE || "https://azmoon.dadrose.com").replace(/\/$/, "");
++const PEAK = parseInt(__ENV.PEAK || "200", 10);
++const HOLD = __ENV.HOLD || "3m";
++
++const stages =
++  __ENV.MODE === "smoke"
++    ? [{ duration: "30s", target: 1 }]
++    : [0.1, 0.25, 0.5, 1].flatMap((f) => [
++        { duration: "1m", target: Math.max(1, Math.round(PEAK * f)) },
++        { duration: HOLD, target: Math.max(1, Math.round(PEAK * f)) },
++      ]).concat([{ duration: "1m", target: 0 }]);
++
++export const options = {
++  stages,
++  thresholds: {
++    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true, delayAbortEval: "1m" }],
++    "http_req_duration{route:home}": ["p(95)<1500"],
++    "http_req_duration{route:guide}": ["p(95)<1500"],
++    "http_req_duration{route:health}": ["p(95)<500"],
++  },
++  userAgent: "dadrose-loadtest/1.0 (+azmoon exam-night)",
++};
++
++function get(path, route) {
++  const res = http.get(BASE + path, { tags: { route } });
++  check(res, { [`${route}: 200`]: (r) => r.status === 200 });
++  return res;
++}
++
++export default function examNight() {
++  get("/", "home");
++  sleep(3 + Math.random() * 7);
++  if (Math.random() < 0.5) get("/guide", "guide");
++  get("/api/v1/health", "health");
++  sleep(2 + Math.random() * 5);
++}
+diff --git a/frontend/src/app/login/page.tsx b/frontend/src/app/login/page.tsx
+index 61b7f5a..1ef0c5b 100644
+--- a/frontend/src/app/login/page.tsx
++++ b/frontend/src/app/login/page.tsx
+@@ -7,7 +7,8 @@ import { IS_MOCK } from "@/lib/env";
+ import { toFaDigits } from "@/lib/format/digits";
+ import { MOCK_OTP_CODE } from "@/lib/mock/constants";
+ 
+-export const metadata: Metadata = { title: "ورود" };
++// noindex (not a robots.txt Disallow): Google must be able to crawl the page to see it.
++export const metadata: Metadata = { title: "ورود", robots: { index: false, follow: true } };
+ 
+ export default async function LoginPage({
+   searchParams,
+diff --git a/frontend/src/app/offline/page.tsx b/frontend/src/app/offline/page.tsx
+index 0b70d47..04682b2 100644
+--- a/frontend/src/app/offline/page.tsx
++++ b/frontend/src/app/offline/page.tsx
+@@ -1,7 +1,7 @@
+ import type { Metadata } from "next";
+ import { Logo } from "@/components/ui/logo";
+ 
+-export const metadata: Metadata = { title: "آفلاین" };
++export const metadata: Metadata = { title: "آفلاین", robots: { index: false, follow: false } };
+ export const dynamic = "force-static";
+ 
+ export default function OfflinePage() {
+-- 
+2.43.0
+
+
+From 9814bc75a3539950a8659908d93e82d8967d6af7 Mon Sep 17 00:00:00 2001
+From: aydin <aidinariannejad404@gmail.com>
+Date: Tue, 13 Oct 2026 15:55:27 +0000
+Subject: [PATCH 2/2] loadtest: point to the dadrose-seo repo
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MUiCKToLs51ZdvifJNEamM
+---
+ frontend/scripts/loadtest/exam-night.k6.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/frontend/scripts/loadtest/exam-night.k6.js b/frontend/scripts/loadtest/exam-night.k6.js
+index 49cf949..e3c52fc 100644
+--- a/frontend/scripts/loadtest/exam-night.k6.js
++++ b/frontend/scripts/loadtest/exam-night.k6.js
+@@ -1,5 +1,5 @@
+ // Exam-night load test for azmoon.dadrose.com (public pages + API health).
+-// Companion to the dadrose.com test in the SEO repo (seo/seo-research/10-urgent-pre-exam/).
++// Companion to the dadrose.com test in the dadrose-seo repo (seo-research/10-urgent-pre-exam/).
+ //
+ //   k6 run -e MODE=smoke frontend/scripts/loadtest/exam-night.k6.js
+ //   k6 run -e BASE=https://staging.azmoon.dadrose.com -e PEAK=200 frontend/scripts/loadtest/exam-night.k6.js
+-- 
+2.43.0
+

@@ -11,7 +11,7 @@
 | L3 | صفحهٔ `/press` و فهرست خبرنگاران | `04-press-page/` | صفحه: ۵ آبان؛ فهرست: ۷ آبان | نام دادرز در خبرهای آزمون نیاید |
 | K5 | تقویم محتوای بعد از آزمون | `05-post-exam-calendar/` | پیش‌نویس‌ها: ۱۰ آبان (کانون)، ۱۵ آذر (مرکز) | فرصت جست‌وجوهای اعتراض، نتایج و مصاحبه از دست برود |
 
-کد azmoon (Next.js): [PR #2 در dadrose-quiz](https://github.com/aidinariannejad404-crypto/dadrose-quiz/pull/2). صفحه‌های `/login` و `/offline` noindex می‌شوند و اسکریپت تست بار azmoon اضافه می‌شود. تست شده است؛ بعد از بازبینی merge شود.
+کد azmoon (Next.js): پوشهٔ [`06-azmoon-dadrose-quiz/`](06-azmoon-dadrose-quiz/README.md). صفحه‌های `/login` و `/offline` noindex می‌شوند و اسکریپت تست بار azmoon اضافه می‌شود. patch و فایل‌ها آماده و تست‌شده‌اند. روش اعمال روی ریپوی dadrose-quiz در README همان پوشه است (همان تغییرات [PR #2](https://github.com/aidinariannejad404-crypto/dadrose-quiz/pull/2)، که merge نشده و باز مانده است).
 
 ---
 
