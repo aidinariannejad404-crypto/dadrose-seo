@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://dadrose.com/score-percentage-calculator/">
+<title>محاسبهٔ درصد آزمون وکالت (نسخهٔ پشتیبان) | دادرز</title>
+<style>
+  :root { --bg:#fff; --fg:#1d1d1f; --muted:#666; --line:#ddd; --accent:#0b5cad; --ok:#e8f3ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141414; --fg:#eee; --muted:#aaa; --line:#333; --accent:#5aa2ff; --ok:#1d2b20; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family: Vazirmatn, Tahoma, sans-serif; line-height:1.8; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.35rem; margin: 8px 0; }
+  .note { color: var(--muted); font-size: .9rem; }
+  .banner { background:#fff3cd; color:#5c4400; padding:8px 12px; border-radius:6px; font-size:.9rem; }
+  table { width:100%; border-collapse: collapse; margin: 12px 0; }
+  th, td { border-bottom:1px solid var(--line); padding:6px 4px; text-align:center; }
+  th:first-child, td:first-child { text-align:right; }
+  input { width: 100%; max-width: 84px; padding:6px; font: inherit; text-align:center; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); }
+  input.name { max-width: 180px; text-align:right; }
+  .pct { font-weight: 700; direction:ltr; unicode-bidi: plaintext; }
+  .bad { color:#c0392b; }
+  button { font: inherit; padding:6px 14px; border:1px solid var(--accent); color:var(--accent); background:transparent; border-radius:6px; cursor:pointer; }
+  .total { background:var(--ok); padding:12px; border-radius:8px; margin-top:8px; }
+  a { color: var(--accent); }
+  @media (max-width: 560px) { th:nth-child(5), td:nth-child(5) { display:none; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="banner">این نسخهٔ سبک و پشتیبانِ ماشین‌حساب است و همه‌چیز در مرورگر خودتان حساب می‌شود.</p>
+  <h1>محاسبهٔ درصد آزمون وکالت</h1>
+  <p class="note">درصد هر درس با نمرهٔ منفی یک‌سوم: <span dir="ltr">(۳ × درست − غلط) ÷ (۳ × کل سؤال‌ها) × ۱۰۰</span>. تعداد سؤال و ضریب هر درس را از دفترچهٔ خودتان وارد کنید.</p>
+
+  <table id="t">
+    <thead><tr><th>درس</th><th>کل سؤال</th><th>درست</th><th>غلط</th><th>ضریب</th><th>درصد</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <button type="button" id="add">افزودن درس</button>
+
+  <div class="total" id="total">میانگین وزنی: <span class="pct">—</span></div>
+  <p class="note">این عدد تخمین است و جای کارنامهٔ رسمی را نمی‌گیرد. <a href="https://dadrose.com/questions-and-answer-key-of-the-1405-bar-exam/">کلید آزمون</a> · <a href="https://dadrose.com/what-is-the-bar-exam-score/">تراز چیست؟</a></p>
+</main>
+<script>
+(function () {
+  var defaults = ["حقوق مدنی", "آیین دادرسی مدنی", "حقوق تجارت", "حقوق جزا", "آیین دادرسی کیفری", "متون فقه", "اصول فقه", "حقوق اساسی"];
+  var fa = "۰۱۲۳۴۵۶۷۸۹";
+  function toEn(s) { return String(s).replace(/[۰-۹]/g, function (d) { return fa.indexOf(d); }).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }); }
+  function toFa(s) { return String(s).replace(/[0-9]/g, function (d) { return fa[d]; }); }
+  function num(el) { var v = parseFloat(toEn(el.value)); return isFinite(v) && v >= 0 ? v : 0; }
+  var tbody = document.querySelector("#t tbody");
+
+  function row(name) {
+    var tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td><input class="name" value="' + (name || "") + '" aria-label="نام درس"></td>' +
+      '<td><input inputmode="numeric" class="n" aria-label="کل سؤال"></td>' +
+      '<td><input inputmode="numeric" class="c" aria-label="درست"></td>' +
+      '<td><input inputmode="numeric" class="w" aria-label="غلط"></td>' +
+      '<td><input inputmode="decimal" class="k" value="1" aria-label="ضریب"></td>' +
+      '<td class="pct">—</td>';
+    tbody.appendChild(tr);
+  }
+
+  function calc() {
+    var sumW = 0, sumP = 0;
+    Array.prototype.forEach.call(tbody.rows, function (tr) {
+      var n = num(tr.querySelector(".n")), c = num(tr.querySelector(".c")), w = num(tr.querySelector(".w")), k = num(tr.querySelector(".k"));
+      var out = tr.querySelector(".pct");
+      out.classList.remove("bad");
+      if (!n) { out.textContent = "—"; return; }
+      if (c + w > n) { out.textContent = "بیش از کل"; out.classList.add("bad"); return; }
+      var p = (3 * c - w) / (3 * n) * 100;
+      out.textContent = toFa(p.toFixed(2)) + "٪";
+      sumW += k; sumP += p * k;
+    });
+    document.querySelector("#total .pct").textContent = sumW ? toFa((sumP / sumW).toFixed(2)) + "٪" : "—";
+  }
+
+  defaults.forEach(row);
+  document.getElementById("add").addEventListener("click", function () { row(""); });
+  tbody.addEventListener("input", calc);
+})();
+</script>
+</body>
+</html>

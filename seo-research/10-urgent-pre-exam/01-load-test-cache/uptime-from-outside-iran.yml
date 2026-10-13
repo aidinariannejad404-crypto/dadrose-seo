@@ -1,0 +1,52 @@
+# Uptime check from OUTSIDE Iran (G1), on GitHub's US runners — the same side of the
+# border Googlebot crawls from. Copy to .github/workflows/ in any private repo.
+# A failed run emails whoever last edited this file (GitHub's default for scheduled runs).
+#
+# Cost: private repos get a monthly quota of free Actions minutes; each run bills ~1 min,
+# so every 30 min ≈ 1,440 min/month. Change the cron if the quota is tight, or keep a
+# free UptimeRobot/Better Stack monitor as the primary 5-minute check (see README §4).
+name: uptime-outside-iran
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check pages and robots.txt
+        shell: bash
+        run: |
+          set -u   # GitHub runs bash with -e: every command below must not fail by accident
+          fail=0
+          # url | expected status
+          while IFS='|' read -r url want; do
+            [ -z "$url" ] && continue
+            read -r code t < <(curl -s -o /dev/null -L --max-time 20 \
+              -A "Mozilla/5.0 (compatible; dadrose-uptime/1.0)" \
+              -w '%{http_code} %{time_total}\n' "$url" || true)
+            if [ "$code" = "$want" ]; then
+              echo "OK   $code ${t}s  $url"
+            else
+              echo "::error::$url returned $code (want $want) in ${t}s"
+              fail=1
+            fi
+          done <<'EOF'
+          https://dadrose.com/|200
+          https://dadrose.com/robots.txt|200
+          https://dadrose.com/sitemap.xml|200
+          https://dadrose.com/questions-and-answer-key-of-the-1405-bar-exam/|200
+          https://dadrose.com/score-percentage-calculator/|200
+          https://azmoon.dadrose.com/|200
+          https://azmoon.dadrose.com/robots.txt|200
+          https://book.dadrose.com/robots.txt|200
+          https://dadrosebook.com/|200
+          https://dadrosebook.com/robots.txt|200
+          EOF
+          exit $fail

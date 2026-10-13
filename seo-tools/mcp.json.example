@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "gsc": {
+      "command": "/home/YOU/seo-venv/bin/python",
+      "args": ["/home/YOU/seo-vendor/mcp-gsc/gsc_server.py"],
+      "env": {
+        "GSC_CREDENTIALS_PATH": "/home/YOU/.config/gsc/service-account.json",
+        "GSC_SKIP_OAUTH": "true",
+        "GSC_ALLOW_DESTRUCTIVE": "false"
+      }
+    }
+  }
+}

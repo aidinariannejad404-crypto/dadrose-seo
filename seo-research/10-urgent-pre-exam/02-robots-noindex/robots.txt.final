@@ -1,0 +1,23 @@
+# dadrose.com — proposed robots.txt (T1 / F1)
+# APPLY ONLY AFTER the noindexed URLs below have left Google's index (see README step 4),
+# and not in the week before an exam. One group for every crawler: Google no longer gets
+# a separate "Allow: /" group, so these rules finally apply to Googlebot too.
+
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /my-account/
+Disallow: /*?s=
+Disallow: /*&s=
+Disallow: /search/
+Disallow: /*add-to-cart=
+Disallow: /*preview_id=
+Disallow: /*?preview=
+Disallow: /*replytocom=
+Disallow: /*?orderby=
+Disallow: /plms-lic/
+Disallow: /trackback/
+
+Sitemap: https://dadrose.com/sitemap_index.xml

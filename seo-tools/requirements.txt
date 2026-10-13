@@ -1,0 +1,7 @@
+# dadrose SEO toolkit (vetted 2026-10-13, see ../seo-research/06-github-repos.md)
+advertools          # crawl, sitemap/robots analysis, log parsing
+extruct             # extract JSON-LD/microdata to QA schema
+hazm                # Persian normalization (ZWNJ, character unification)
+searchconsole       # joshcarty/google-searchconsole: scheduled GSC exports
+sentence-transformers  # multilingual embeddings: clustering, internal links, cannibalization
+bertopic            # topic modelling of queries/articles
