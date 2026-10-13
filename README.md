@@ -4,6 +4,8 @@
 
 **از اینجا شروع کنید:** [`seo-research/10-urgent-pre-exam/00-RUNBOOK.md`](seo-research/10-urgent-pre-exam/00-RUNBOOK.md). پنج کار فوری پیش از آزمون کانون (۱۴ آبان ۱۴۰۵)، به ترتیب اجرا و با روش چک کردن هر گام.
 
+**تصمیم‌های باز مالک:** [`seo-research/OPEN-DECISIONS.md`](seo-research/OPEN-DECISIONS.md). هر مورد با گزینه‌ها و پیشنهاد ما.
+
 | مسیر | محتوا |
 |---|---|
 | `seo-research/00-master-plan.md` | برنامهٔ جامع (فارسی)، نقطهٔ ورود همهٔ تحقیق‌ها |
