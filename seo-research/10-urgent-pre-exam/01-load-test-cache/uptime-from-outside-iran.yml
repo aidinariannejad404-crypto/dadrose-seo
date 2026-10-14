@@ -20,33 +20,53 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Check pages and robots.txt
+      - name: Check pages, robots.txt and sitemaps
         shell: bash
         run: |
           set -u   # GitHub runs bash with -e: every command below must not fail by accident
           fail=0
-          # url | expected status
-          while IFS='|' read -r url want; do
+          body=$(mktemp)
+          # url | expected status | kind
+          #   page    — redirects are followed (a moved page is fine)
+          #   robots  — no redirect allowed, and the body must be robots rules: a robots.txt that redirects to the
+          #             home page, or an HTML page served at /robots.txt, both return 200 with -L but Google
+          #             then has no valid rules
+          #   sitemap — no redirect allowed, and the body must be <urlset> or <sitemapindex>; use the sitemap URL
+          #             that robots.txt declares (dadrose.com: sitemap_index.xml; /sitemap.xml is Rank Math's 301)
+          while IFS='|' read -r url want kind; do
             [ -z "$url" ] && continue
-            read -r code t < <(curl -s -o /dev/null -L --max-time 20 \
+            follow=-L; [ "$kind" != "page" ] && follow=
+            read -r code t < <(curl -s -o "$body" $follow --max-time 20 \
               -A "Mozilla/5.0 (compatible; dadrose-uptime/1.0)" \
               -w '%{http_code} %{time_total}\n' "$url" || true)
-            if [ "$code" = "$want" ]; then
+            problem=""
+            if [ "$code" != "$want" ]; then
+              problem="returned $code (want $want, kind $kind; a 3xx here means a redirect)"
+            elif [ "$kind" = "robots" ] && ! grep -qiE '^[[:space:]]*(user-agent|sitemap)[[:space:]]*:' "$body"; then
+              problem="is not a robots.txt (no User-agent/Sitemap line)"
+            elif [ "$kind" = "robots" ] && grep -qiE '<html|<!doctype' "$body"; then
+              problem="robots.txt contains HTML"
+            elif [ "$kind" = "sitemap" ] && ! grep -qE '<(urlset|sitemapindex)' "$body"; then
+              problem="is not an XML sitemap"
+            fi
+            if [ -z "$problem" ]; then
               echo "OK   $code ${t}s  $url"
             else
-              echo "::error::$url returned $code (want $want) in ${t}s"
+              echo "::error::$url $problem (${t}s)"
               fail=1
             fi
           done <<'EOF'
-          https://dadrose.com/|200
-          https://dadrose.com/robots.txt|200
-          https://dadrose.com/sitemap.xml|200
-          https://dadrose.com/questions-and-answer-key-of-the-1405-bar-exam/|200
-          https://dadrose.com/score-percentage-calculator/|200
-          https://azmoon.dadrose.com/|200
-          https://azmoon.dadrose.com/robots.txt|200
-          https://book.dadrose.com/robots.txt|200
-          https://dadrosebook.com/|200
-          https://dadrosebook.com/robots.txt|200
+          https://dadrose.com/|200|page
+          https://dadrose.com/robots.txt|200|robots
+          https://dadrose.com/sitemap_index.xml|200|sitemap
+          https://dadrose.com/questions-and-answer-key-of-the-1405-bar-exam/|200|page
+          https://dadrose.com/score-percentage-calculator/|200|page
+          https://azmoon.dadrose.com/|200|page
+          https://azmoon.dadrose.com/robots.txt|200|robots
+          https://azmoon.dadrose.com/sitemap.xml|200|sitemap
+          https://book.dadrose.com/robots.txt|200|robots
+          https://dadrosebook.com/|200|page
+          https://dadrosebook.com/robots.txt|200|robots
           EOF
+          rm -f "$body"
           exit $fail

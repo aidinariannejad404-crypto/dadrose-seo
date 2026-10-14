@@ -53,6 +53,12 @@ def fetch(url, follow=True):
         return e.code, dict(e.headers), "", url
 
 
+def header(headers, name):
+    """Header lookup that ignores case: HTTP/2 and many proxies/CDNs send «location», not «Location»."""
+    name = name.lower()
+    return next((v for k, v in headers.items() if k.lower() == name), "")
+
+
 def parse_robots(text):
     """Return Google-style rules for the group that applies to Googlebot."""
     groups, cur, agents, last_was_agent = [], None, [], False
@@ -137,7 +143,7 @@ def main(argv):
         is_blocked = blocked(rules, path)
         if want.startswith("301:"):
             st, hd, _, _ = fetch(full, follow=False)
-            loc = urllib.parse.unquote(hd.get("Location", ""))
+            loc = urllib.parse.unquote(header(hd, "Location"))
             ok = st in (301, 308) and loc.rstrip("/").endswith(want[4:].rstrip("/"))
             verdict = "OK" if ok else f"FIX: want 301 → {want[4:]}, got {st} {loc}"
             ni = "-"

@@ -3,10 +3,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from load import load
 import pandas as pd
 from urllib.parse import unquote, quote
-OUT='/mnt/project-files/seo-research/gsc'
+HERE=os.path.dirname(os.path.abspath(__file__))
+OUT=os.environ.get('GSC_OUT',os.path.dirname(HERE))                    # seo-research/gsc
+IN=os.environ.get('GSC_IN','in')                                         # folder with the workbook and gsc.csv
 os.makedirs(OUT+'/clean',exist_ok=True)
-v1=load('in/v1.xlsx'); v2=load('in/v2.xlsx')
-SRC='GSC Performance via dadrose_keywords_for_writers_v2.xlsx; 2025-12-31..2026-10-11 (10 Dey 1404..19 Mehr 1405)'
+# v4 workbook: v2/v3 summed the impressions of Elementor TOC jump links (#elementor-toc__heading-anchor-N) into
+# their page — up to 3.4× too many impressions and a CTR too low (Gemini audit, 1405/07/22). Never feed v2/v3 here.
+v2=load(os.path.join(IN,os.environ.get('GSC_WORKBOOK','v4.xlsx')))
+SRC='GSC Performance via dadrose_keywords_for_writers_v4.xlsx; 2025-12-31..2026-10-11 (10 Dey 1404..19 Mehr 1405)'
 FA_D=str.maketrans('۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩','01234567890123456789')
 def norm(s):
     s=str(s).translate(FA_D).replace('ي','ی').replace('ك','ک').replace('‌',' ').replace('أ','ا').replace('آ','ا')
@@ -28,11 +32,18 @@ for k,slug in SLUG.items():
     for c in df.columns:
         if c in NUM: df[c]=pd.to_numeric(df[c])
     df=df.rename(columns=EN)
-    if 'url' in df: df['path']=df.url.map(path)
+    if 'url' in df:
+        df['path']=df.url.map(path)
+        # a jump-link row is the same search result as its page: keep the largest impressions, add the clicks
+        if df.url.astype(str).str.contains('#').any():
+            keys=['path']+(['query'] if 'query' in df else [])
+            df=df.sort_values('impressions',ascending=False)
+            clicks=df.groupby(keys).clicks.sum()
+            df=df.drop_duplicates(keys).set_index(keys); df['clicks']=clicks; df=df.reset_index()
     df.to_csv(f'{OUT}/clean/v2_{slug}.csv',index=False,encoding='utf-8-sig'); S[slug]=df
 
 # ---------- URL inspection audit ----------
-a=pd.read_csv('in/gsc.csv',encoding='utf-8-sig')
+a=pd.read_csv(os.path.join(IN,'gsc.csv'),encoding='utf-8-sig')
 a['path']=a.url.map(path)
 a['non_ascii_slug']=a.url.map(lambda u: bool(re.search('[^\x00-\x7f]',u)))
 perf_paths=set(S['05_page_queries'].path)|set(S['02b_pos4_10_queries'].path)|set(S['03_question_queries'].path)|set(S['01_ctr_gap_pages'].path)|set(S['02_page2_queries'].path)
@@ -121,7 +132,7 @@ pp=pd.DataFrame([(a_,b_,v[0],v[1],'؛ '.join(v[2][:6])) for (a_,b_),v in pairs.i
 cs.to_csv(f'{OUT}/cannibalization-queries.csv',encoding='utf-8-sig'); pp.to_csv(f'{OUT}/cannibalization-page-pairs.csv',index=False,encoding='utf-8-sig')
 
 # ---------- keyword map comparison ----------
-km=pd.read_csv('/mnt/project-files/seo-research/04-keyword-map.csv',encoding='utf-8-sig'); km['nq']=km.keyword.map(norm)
+km=pd.read_csv(os.path.join(os.path.dirname(OUT),'04-keyword-map.csv'),encoding='utf-8-sig'); km['nq']=km.keyword.map(norm)
 gq=allpairs.groupby('nq').agg(gsc_impr=('impressions','sum'),gsc_best_pos=('avg_position','min'),gsc_pages=('path',lambda s:' | '.join(dict.fromkeys(s)))).reset_index()
 km=km.merge(gq,on='nq',how='left'); km['match']=km.gsc_impr.notna().map({True:'exact',False:''})
 # partial: GSC query contains the map keyword
@@ -141,7 +152,7 @@ inmap=set(km.nq)
 q['in_map']=q.nq.isin(inmap)
 R['gsc_not_in_map_by_topic']=q[~q.in_map].groupby('topic').impressions.sum().sort_values(ascending=False).to_dict()
 R['gsc_in_map_impr']=int(q[q.in_map].impressions.sum()); R['gsc_total_impr']=int(q.impressions.sum()); R['gsc_n']=len(q)
-json.dump(R,open('R.json','w'),ensure_ascii=False,indent=1,default=str)
+json.dump(R,open(os.path.join(OUT,'clean','R.json'),'w',encoding='utf-8'),ensure_ascii=False,indent=1,default=str)
 print(tp.to_string()); print(qw.head(25)[['query','impressions','clicks','avg_position','est_extra_clicks_if_pos3','path']].to_string())
 print(cs.head(25).to_string()); print(pp.head(15).to_string())
 print(km.match.value_counts()); print(pd.crosstab(km.priority,km.match)); print(R['gsc_not_in_map_by_topic'], R['gsc_in_map_impr'],R['gsc_total_impr'])

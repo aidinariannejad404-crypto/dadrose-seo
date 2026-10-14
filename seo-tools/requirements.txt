@@ -5,3 +5,6 @@ hazm                # Persian normalization (ZWNJ, character unification)
 searchconsole       # joshcarty/google-searchconsole: scheduled GSC exports
 sentence-transformers  # multilingual embeddings: clustering, internal links, cannibalization
 bertopic            # topic modelling of queries/articles
+
+# second-opinion auditor (seo-tools/gemini_audit.py)
+google-genai

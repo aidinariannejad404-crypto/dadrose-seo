@@ -1,0 +1,346 @@
+{
+ "audit_states": {
+  "false": {
+   "Discovered - currently not indexed": 21,
+   "ERR": 1,
+   "Excluded by ‘noindex’ tag": 5,
+   "Page with redirect": 1,
+   "Submitted and indexed": 209,
+   "URL is unknown to Google": 20
+  },
+  "true": {
+   "Discovered - currently not indexed": 0,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 0,
+   "Page with redirect": 0,
+   "Submitted and indexed": 0,
+   "URL is unknown to Google": 656
+  }
+ },
+ "audit_type_state": {
+  "category": {
+   "Discovered - currently not indexed": 0,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 0,
+   "Page with redirect": 0,
+   "Submitted and indexed": 0,
+   "URL is unknown to Google": 10
+  },
+  "course": {
+   "Discovered - currently not indexed": 7,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 0,
+   "Page with redirect": 0,
+   "Submitted and indexed": 32,
+   "URL is unknown to Google": 30
+  },
+  "lesson": {
+   "Discovered - currently not indexed": 0,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 1,
+   "Page with redirect": 0,
+   "Submitted and indexed": 0,
+   "URL is unknown to Google": 515
+  },
+  "lesson-root": {
+   "Discovered - currently not indexed": 0,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 0,
+   "Page with redirect": 0,
+   "Submitted and indexed": 0,
+   "URL is unknown to Google": 1
+  },
+  "page/post": {
+   "Discovered - currently not indexed": 14,
+   "ERR": 1,
+   "Excluded by ‘noindex’ tag": 4,
+   "Page with redirect": 1,
+   "Submitted and indexed": 177,
+   "URL is unknown to Google": 36
+  },
+  "product": {
+   "Discovered - currently not indexed": 0,
+   "ERR": 0,
+   "Excluded by ‘noindex’ tag": 0,
+   "Page with redirect": 0,
+   "Submitted and indexed": 0,
+   "URL is unknown to Google": 84
+  }
+ },
+ "contradictions": [
+  "/courses/دوره-امهات-حقوق-مدنی/",
+  "/courses/مجموعه-قوانین-خاص-حقوقی-و-کیفری-جزوه/",
+  "/courses/حقوق-مدنی-1-تا-8/",
+  "/courses/دوره-جامع-متون-فقه-کانون-وکلا/",
+  "/courses/آرای-وحدت-رویه-5-سال-اخیر-1400-تا-1404/",
+  "/آموزش-کامل-شروع-به-جرم-تحلیل-10-تست-طلای/",
+  "/راهنمای-جامع-کارآموزی-وکالت-قسمت-2-انت/",
+  "/انواع-وکیل-دادگستری-و-وکالت-در-نظام-حقو/"
+ ],
+ "ascii_unknown": [
+  [
+   "/courses/new-course-18/",
+   "course"
+  ],
+  [
+   "/courses/new-course-20/",
+   "course"
+  ],
+  [
+   "/courses/new-course-43/",
+   "course"
+  ],
+  [
+   "/courses/new-course-41/",
+   "course"
+  ],
+  [
+   "/lesson/",
+   "lesson-root"
+  ],
+  [
+   "/what-should-we-do-if-a-check-bounces/",
+   "page/post"
+  ],
+  [
+   "/unauthorized-transaction-and-discharge-of-obligations/",
+   "page/post"
+  ],
+  [
+   "/basic-rights-education-bar-exam/",
+   "page/post"
+  ],
+  [
+   "/which-book-should-we-read-for-criminal-law/",
+   "page/post"
+  ],
+  [
+   "/what-is-skimmer/",
+   "page/post"
+  ],
+  [
+   "/choosing-the-caretaker-and-city-council/",
+   "page/post"
+  ],
+  [
+   "/answer-key-for-criminal-procedure-by-the-bar-center/",
+   "page/post"
+  ],
+  [
+   "/complete-special-criminal-law-training-part-3/",
+   "page/post"
+  ],
+  [
+   "/tips-and-test-on-the-principles-of-jurisprudence/",
+   "page/post"
+  ],
+  [
+   "/criminal-law-code/",
+   "page/post"
+  ],
+  [
+   "/success-in-the-bar-exam-in-the-fastest-time/",
+   "page/post"
+  ],
+  [
+   "/tahlil-hoghogh-jaza/",
+   "page/post"
+  ],
+  [
+   "/bar-exam-course/",
+   "page/post"
+  ],
+  [
+   "/account/",
+   "page/post"
+  ],
+  [
+   "/login/",
+   "page/post"
+  ]
+ ],
+ "page_total": [
+  514553,
+  22937,
+  120
+ ],
+ "qw_bands": {
+  "n": {
+   "4-6": 284,
+   "7-10": 194,
+   "11-20": 18
+  },
+  "impr": {
+   "4-6": 221305,
+   "7-10": 98428,
+   "11-20": 2543
+  },
+  "clicks": {
+   "4-6": 6195,
+   "7-10": 1154,
+   "11-20": 52
+  },
+  "extra": {
+   "4-6": 15939.0,
+   "7-10": 8693.0,
+   "11-20": 201.0
+  }
+ },
+ "km_match": {
+  "": 380,
+  "exact": 42,
+  "contained-in-gsc-query": 34
+ },
+ "km_by_priority": {
+  "": {
+   "P1": 79,
+   "P2": 196,
+   "P3": 105
+  },
+  "contained-in-gsc-query": {
+   "P1": 8,
+   "P2": 18,
+   "P3": 8
+  },
+  "exact": {
+   "P1": 17,
+   "P2": 21,
+   "P3": 4
+  }
+ },
+ "km_cluster": {
+  "n": {
+   "Bar exam: hub & calendar": 49,
+   "Bar exam: resources & key articles": 19,
+   "Subject pillars: حقوق تجارت": 4,
+   "Subject pillars: حقوق مدنی": 4,
+   "Bar exam: past papers & keys": 32,
+   "Bar exam: results & score": 33,
+   "Bar exam: courses & planning": 23,
+   "Subject tests: حقوق مدنی": 11,
+   "Bar exam: internship (post-exam)": 7,
+   "Subject pillars: حقوق جزا": 7,
+   "Other exams: سردفتری": 9,
+   "Bar exam: mock exams": 18,
+   "Bar exam: books": 21,
+   "Other exams: ارشد حقوق": 14,
+   "Other exams: قضاوت": 20,
+   "Other exams: کارشناس رسمی": 4,
+   "Statute articles: آ.د.م": 9,
+   "Doctrine: حقوق تجارت": 2,
+   "Doctrine: حقوق مدنی": 21,
+   "Navigational: bodies & sites": 12,
+   "Doctrine: آیین دادرسی مدنی": 42,
+   "Subject books: آیین دادرسی مدنی": 8,
+   "Statute articles: قانون مدنی": 9,
+   "Statute articles: قانون تجارت": 5,
+   "Statute articles: ق.م.ا": 8,
+   "Subject books: حقوق مدنی": 9,
+   "Subject books: حقوق جزا": 1,
+   "Subject books: آیین دادرسی کیفری": 2,
+   "Subject books: حقوق تجارت": 3,
+   "Subject pillars: آیین دادرسی مدنی": 3,
+   "Subject pillars: آیین دادرسی کیفری": 4,
+   "Subject tests: آیین دادرسی کیفری": 5,
+   "Subject tests: آیین دادرسی مدنی": 9,
+   "Subject tests: حقوق اساسی": 6,
+   "Subject tests: حقوق تجارت": 8,
+   "Subject tests: حقوق ثبت": 5,
+   "Subject tests: حقوق جزا": 10
+  },
+  "matched": {
+   "Bar exam: hub & calendar": 25,
+   "Bar exam: resources & key articles": 3,
+   "Subject pillars: حقوق تجارت": 3,
+   "Subject pillars: حقوق مدنی": 3,
+   "Bar exam: past papers & keys": 5,
+   "Bar exam: results & score": 4,
+   "Bar exam: courses & planning": 4,
+   "Subject tests: حقوق مدنی": 2,
+   "Bar exam: internship (post-exam)": 3,
+   "Subject pillars: حقوق جزا": 6,
+   "Other exams: سردفتری": 2,
+   "Bar exam: mock exams": 2,
+   "Bar exam: books": 0,
+   "Other exams: ارشد حقوق": 0,
+   "Other exams: قضاوت": 2,
+   "Other exams: کارشناس رسمی": 0,
+   "Statute articles: آ.د.م": 0,
+   "Doctrine: حقوق تجارت": 1,
+   "Doctrine: حقوق مدنی": 1,
+   "Navigational: bodies & sites": 4,
+   "Doctrine: آیین دادرسی مدنی": 0,
+   "Subject books: آیین دادرسی مدنی": 0,
+   "Statute articles: قانون مدنی": 0,
+   "Statute articles: قانون تجارت": 0,
+   "Statute articles: ق.م.ا": 0,
+   "Subject books: حقوق مدنی": 1,
+   "Subject books: حقوق جزا": 0,
+   "Subject books: آیین دادرسی کیفری": 0,
+   "Subject books: حقوق تجارت": 0,
+   "Subject pillars: آیین دادرسی مدنی": 1,
+   "Subject pillars: آیین دادرسی کیفری": 0,
+   "Subject tests: آیین دادرسی کیفری": 0,
+   "Subject tests: آیین دادرسی مدنی": 0,
+   "Subject tests: حقوق اساسی": 2,
+   "Subject tests: حقوق تجارت": 0,
+   "Subject tests: حقوق ثبت": 2,
+   "Subject tests: حقوق جزا": 0
+  },
+  "impr": {
+   "Bar exam: hub & calendar": 63861.0,
+   "Bar exam: resources & key articles": 4818.0,
+   "Subject pillars: حقوق تجارت": 1506.0,
+   "Subject pillars: حقوق مدنی": 1499.0,
+   "Bar exam: past papers & keys": 1462.0,
+   "Bar exam: results & score": 718.0,
+   "Bar exam: courses & planning": 696.0,
+   "Subject tests: حقوق مدنی": 364.0,
+   "Bar exam: internship (post-exam)": 323.0,
+   "Subject pillars: حقوق جزا": 129.0,
+   "Other exams: سردفتری": 67.0,
+   "Bar exam: mock exams": 57.0,
+   "Bar exam: books": 0.0,
+   "Other exams: ارشد حقوق": 0.0,
+   "Other exams: قضاوت": 0.0,
+   "Other exams: کارشناس رسمی": 0.0,
+   "Statute articles: آ.د.م": 0.0,
+   "Doctrine: حقوق تجارت": 0.0,
+   "Doctrine: حقوق مدنی": 0.0,
+   "Navigational: bodies & sites": 0.0,
+   "Doctrine: آیین دادرسی مدنی": 0.0,
+   "Subject books: آیین دادرسی مدنی": 0.0,
+   "Statute articles: قانون مدنی": 0.0,
+   "Statute articles: قانون تجارت": 0.0,
+   "Statute articles: ق.م.ا": 0.0,
+   "Subject books: حقوق مدنی": 0.0,
+   "Subject books: حقوق جزا": 0.0,
+   "Subject books: آیین دادرسی کیفری": 0.0,
+   "Subject books: حقوق تجارت": 0.0,
+   "Subject pillars: آیین دادرسی مدنی": 0.0,
+   "Subject pillars: آیین دادرسی کیفری": 0.0,
+   "Subject tests: آیین دادرسی کیفری": 0.0,
+   "Subject tests: آیین دادرسی مدنی": 0.0,
+   "Subject tests: حقوق اساسی": 0.0,
+   "Subject tests: حقوق تجارت": 0.0,
+   "Subject tests: حقوق ثبت": 0.0,
+   "Subject tests: حقوق جزا": 0.0
+  }
+ },
+ "gsc_not_in_map_by_topic": {
+  "آزمون وکالت: ثبت‌نام، زمان، هزینه، شرایط": 138489,
+  "کیفری: جرم، مجازات، دادگاه کیفری": 47459,
+  "مدنی: عقود، اموال، ارث": 25612,
+  "خانواده: مهریه، طلاق، نامزدی": 19433,
+  "سایر": 14823,
+  "آیین دادرسی و ادله": 10518,
+  "آزمون وکالت: منابع، آمادگی، دروس": 8185,
+  "تجارت و شرکت‌ها": 2338,
+  "چک و اسناد تجاری": 1855,
+  "وکالت به‌عنوان شغل": 1677,
+  "سایر آزمون‌ها (سردفتری، مشاوره، قضاوت)": 458
+ },
+ "gsc_in_map_impr": 58749,
+ "gsc_total_impr": 329596,
+ "gsc_n": 531
+}
