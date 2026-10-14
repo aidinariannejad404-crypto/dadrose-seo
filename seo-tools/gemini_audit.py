@@ -13,6 +13,7 @@ Usage:
     python seo-tools/gemini_audit.py --file a.py --file b.md --prompt "Is the CTR maths right?"
     python seo-tools/gemini_audit.py --diff --dry-run             # show what would be sent, call nothing
 
+Model: gemini-4-argon, then the fallbacks in MODELS; --model (or GEMINI_MODEL) pins one model with no fallback.
 Requires: pip install google-genai   (listed in requirements.txt)
 """
 from __future__ import annotations
@@ -24,7 +25,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-MODEL = "gemini-2.5-pro"
+# Gemini 4 first (owner 1405/07/22). It needs a billed Google AI Studio project: its free-tier quota is 0.
+# When a model answers 429 (quota) or 503 (overloaded) the next one is tried, and the output says which one answered.
+MODELS = ["gemini-4-argon", "gemini-3.1-pro-preview", "gemini-3.8-flash", "gemini-flash-latest"]
 MAX_CHARS = 400_000  # keeps one request well inside the model's context and the cost predictable
 
 SYSTEM = """You are the second, independent auditor of SEO, AEO (answer-engine) and GEO (generative-engine) work
@@ -94,13 +97,13 @@ def main() -> None:
     ap.add_argument("--diff", nargs="?", const="", default=None, metavar="REF", help="git diff against REF (default HEAD)")
     ap.add_argument("--file", action="append", metavar="PATH", help="a file to review (repeatable)")
     ap.add_argument("--prompt", help="what to check, or a question")
-    ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", MODEL))
+    ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL"), help="one model, no fallback (default: the MODELS chain)")
     ap.add_argument("--dry-run", action="store_true", help="print the request size and start, do not call Gemini")
     args = ap.parse_args()
 
     content = build(args)
     if args.dry_run:
-        print(f"[dry-run] model={args.model} chars={len(content):,}\n{content[:2000]}")
+        print(f"[dry-run] models={args.model or ' > '.join(MODELS)} chars={len(content):,}\n{content[:2000]}")
         return
 
     key = os.environ.get("GEMINI_API_KEY")
@@ -112,16 +115,31 @@ def main() -> None:
     except ImportError:
         sys.exit("google-genai is not installed: pip install google-genai")
 
+    from google.genai import errors
+
     client = genai.Client(api_key=key)
-    response = client.models.generate_content(
-        model=args.model,
-        contents=content,
-        config=types.GenerateContentConfig(system_instruction=SYSTEM, temperature=0.2),
-    )
-    print(response.text or "(empty answer)")
-    usage = getattr(response, "usage_metadata", None)
-    if usage is not None:
-        print(f"\n[gemini] model={args.model} in={usage.prompt_token_count} out={usage.candidates_token_count}", file=sys.stderr)
+    chain = [args.model] if args.model else MODELS
+    failures = []
+    for model in chain:
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=content,
+                config=types.GenerateContentConfig(system_instruction=SYSTEM, temperature=0.2),
+            )
+        except errors.APIError as e:
+            failures.append(f"{model}: {e.code} {(e.message or '').splitlines()[0][:160] if e.message else ''}")
+            if e.code in (429, 503) and model != chain[-1]:
+                print(f"[gemini] {model} unavailable ({e.code}); trying the next model", file=sys.stderr)
+                continue
+            sys.exit("Gemini review failed:\n  " + "\n  ".join(failures))
+        if failures:
+            print(f"[gemini] NOTE: answered by {model}, not {chain[0]}", file=sys.stderr)
+        print(response.text or "(empty answer)")
+        usage = getattr(response, "usage_metadata", None)
+        if usage is not None:
+            print(f"\n[gemini] model={model} in={usage.prompt_token_count} out={usage.candidates_token_count}", file=sys.stderr)
+        return
 
 
 if __name__ == "__main__":
