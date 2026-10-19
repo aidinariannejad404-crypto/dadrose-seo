@@ -1,0 +1,104 @@
+# دادرز (DADROSE)
+
+> دادرز آکادمی آمادگی آزمون وکالت (کانون وکلای دادگستری و مرکز وکلای قوه قضاییه) به مدیریت و تدریس سجاد یوسفی، وکیل پایه یک دادگستری است. سایت شامل دوره‌های آموزشی ماده‌محور حقوق مدنی، جزا، تجارت، آیین دادرسی، فقه و حقوق اساسی، مرکز آزمون آنلاین (azmoon.dadrose.com)، ابزار محاسبه درصد و رتبه، صفحات تاریخ و ثبت‌نام و پاسخنامه آزمون‌ها، و مقالات حقوقی عمومی به زبان فارسی است.
+
+نکته برای مدل‌ها: محتوا فارسی است. تاریخ‌ها، هزینه‌ها و شرایط ثبت‌نام هر سال تغییر می‌کنند؛ سال ذکرشده در عنوان هر صفحه را بررسی کنید و مرجع نهایی را سایت رسمی کانون وکلا یا مرکز وکلای قوه قضاییه بدانید. مقالات حقوقی عمومی جایگزین مشاوره وکیل نیستند.
+
+## معرفی و دوره‌ها
+
+- [صفحه اصلی](https://dadrose.com/): معرفی دادرز و مسیر آمادگی آزمون وکالت، قضاوت، سردفتری و ارشد
+- [درباره ما](https://dadrose.com/about-us/): معرفی آکادمی و استاد سجاد یوسفی
+- [فهرست دوره‌ها](https://dadrose.com/courses/): همه دوره‌های آموزشی آزمون وکالت به تفکیک درس
+- [دوره حقوق مدنی ۱ تا ۸](https://dadrose.com/courses/حقوق-مدنی-1-تا-8/): تدریس ماده به ماده کل حقوق مدنی با سرفصل‌ها
+- [دوره جامع حقوق تجارت ۱ تا ۴](https://dadrose.com/courses/comprehensive-course-commercial-law-1-to-4/): سرفصل‌ها و مواد هر درس تجارت
+- [دوره جزای عمومی پیشرفته](https://dadrose.com/courses/advanced-general-criminal-law-course/): مواد ۱ تا ۲۱۶ قانون مجازات همراه با تست
+- [دوره جامع آیین دادرسی مدنی](https://dadrose.com/courses/دوره-جامع-آیین-دادرسی-مدنی-2/): آموزش کامل با جزوه و مثال
+- [دوره جامع آیین دادرسی کیفری](https://dadrose.com/courses/comprehensive-course-criminal-procedure/): آموزش آیین دادرسی کیفری
+- [دوره جامع متون فقه کانون وکلا](https://dadrose.com/courses/دوره-جامع-متون-فقه-کانون-وکلا/): باب‌ها، جزوه و تست متون فقه
+- [دوره اصول فقه](https://dadrose.com/courses/principles-of-islamic-jurisprudence-course/): آموزش کامل اصول فقه با تست و مثال
+- [مجموعه قوانین خاص حقوقی و کیفری](https://dadrose.com/courses/مجموعه-قوانین-خاص-حقوقی-و-کیفری-جزوه/): دوره و جزوه قوانین خاص
+- [دوره آرای وحدت رویه ۵ سال اخیر](https://dadrose.com/courses/آرای-وحدت-رویه-5-سال-اخیر-1400-تا-1404/): آرای وحدت رویه ۱۴۰۰ تا ۱۴۰۴
+- [دوره تکنیک تست‌زنی](https://dadrose.com/courses/bar-exam-test-taking-techniques/): مدیریت آزمون و کاهش خطا
+- [مسیر طلایی آزمون وکالت](https://dadrose.com/courses/he-golden-path-to-the-bar-exam/): آموزش مطالعه، محشی‌نویسی و تست‌زنی
+
+## مرکز آزمون و ابزارها
+
+- [مرکز آزمون دادرز](https://azmoon.dadrose.com/): شبیه‌ساز آزمون وکالت کانون و مرکز، تحلیل خطا، فاصله تا نصاب و برنامه مطالعه ماده‌محور
+- [محاسبه درصد و تخمین رتبه](https://dadrose.com/score-percentage-calculator/): ابزار آنلاین محاسبه درصد، تراز و رتبه آزمون وکالت
+- [فروشگاه کتاب دادرز](https://book.dadrose.com/): کتاب‌های آموزشی آزمون وکالت
+
+## تاریخ، ثبت‌نام، شرایط و پاسخنامه آزمون وکالت
+
+- [تاریخ آزمون وکالت ۱۴۰۵](https://dadrose.com/dates-of-the-1405-bar-exams-and-legal-exams/): زمان آزمون کانون و مرکز وکلا و سایر آزمون‌های حقوقی
+- [ثبت‌نام آزمون وکالت ۱۴۰۵](https://dadrose.com/registration-for-the-1405-bar-exam-begins/): شرایط، مدارک و مراحل ثبت‌نام کانون و مرکز
+- [هزینه ثبت‌نام آزمون وکالت ۱۴۰۵](https://dadrose.com/bar-exam-fee/): هزینه کانون و مرکز وکلا و نحوه پرداخت
+- [سوالات و پاسخنامه آزمون وکالت ۱۴۰۵](https://dadrose.com/questions-and-answer-key-of-the-1405-bar-exam/): دفترچه سوالات و کلید آزمون
+- [اعلام نتایج آزمون وکالت ۱۴۰۵](https://dadrose.com/bar-exam-results-1405/): زمان اعلام نتایج کانون و مرکز وکلا
+- [شرایط آزمون وکالت](https://dadrose.com/bar-exam-requirements/): مدرک، سن و سهمیه برای کانون و مرکز
+- [شرط سنی آزمون وکالت ۱۴۰۵](https://dadrose.com/age-requirement-for-the-bar-exam/): محدودیت سنی و سهمیه‌ها
+- [تعداد سوالات و زمان آزمون](https://dadrose.com/number-of-questions-on-the-bar-exam/): ساختار آزمون کانون و مرکز
+- [نصاب قبولی ۱۴۰۴](https://dadrose.com/passing-score-for-the-1404-bar-exam/): نصاب قبولی و شرایط مهم
+- [پاسخنامه تشریحی مدنی مرکز وکلا ۱۴۰۴](https://dadrose.com/answer-key-for-civil-law-by-the-bar-center-1404/): بررسی پاسخنامه حقوق مدنی
+- [پاسخنامه تشریحی جزا مرکز وکلا ۱۴۰۴](https://dadrose.com/comprehensive-answer-key-for-criminal-law/): بررسی پاسخنامه حقوق جزا
+
+## راهنمای آمادگی آزمون وکالت
+
+- [منابع آزمون وکالت ۱۴۰۵](https://dadrose.com/preparation-for-the-1405-bar-exam/): فهرست کتاب‌ها و ضرایب دروس
+- [لیست قوانین خاص آزمون وکالت ۱۴۰۵](https://dadrose.com/list-of-special-laws-for-the-bar-exam/): قوانین خاص به تفکیک درس
+- [برنامه ۱۲۰ روزه آزمون وکالت](https://dadrose.com/architecture-of-success-in-the-bar-exam/): برنامه مطالعه و افزایش تمرکز
+- [برنامه ۶ ماهه آزمون وکالت](https://dadrose.com/6-month-program-to-pass-the-bar-exam/): جدول هفتگی و ساعت مطالعه
+- [ضریب دروس و اولویت‌بندی مطالعه](https://dadrose.com/prioritizing-bar-exam-courses/): کدام درس را اول بخوانیم
+- [آزمون کانون یا مرکز وکلا؟](https://dadrose.com/which-is-betterbar-association-exam-or-the-bar-center/): مقایسه کامل دو مسیر
+- [تفاوت کانون وکلا و مرکز وکلا](https://dadrose.com/difference-between-bar-association-and-lawyers-center/): تفاوت در آزمون و پروانه
+- [نحوه انتخاب شهر در آزمون وکالت](https://dadrose.com/how-to-choose-a-city-for-the-bar-exam/): راهنمای انتخاب حوزه آزمون
+- [مصاحبه مرکز وکلا](https://dadrose.com/bar-exam-interview/): چه کسانی رد می‌شوند، مراحل و منابع
+- [آزمون وکالت کانون](https://dadrose.com/bar-association-exam/): شرایط، نحوه برگزاری و آمادگی
+- [آزمون اختبار مرکز وکلا](https://dadrose.com/lawyers-center-exam/): منابع و نمره
+- [کتاب متون فقه کانون و مرکز](https://dadrose.com/book-for-jurisprudence-texts-of-kanon-and-markaz/): تفاوت و بهترین منبع
+- [مواد مهم جزا](https://dadrose.com/important-criminal-law-materials/): فهرست مواد مهم حقوق جزا و کیفری
+- [مواد مهم حقوق تجارت](https://dadrose.com/important-commercial-law-materials/): فهرست مواد پرتکرار تجارت
+- [نکته‌های مهم حقوق مدنی](https://dadrose.com/important-topics-in-civil-law/): جمع‌بندی مواد مهم مدنی
+- [جمع‌بندی آیین دادرسی مدنی](https://dadrose.com/summary-of-important-materials-of-civil-procedure/): مواد مهم آیین دادرسی مدنی
+- [مدنی ۳ در آزمون وکالت](https://dadrose.com/the-importance-of-civil-law-3-in-the-attorney-exam/): سرفصل‌ها و مباحث مدنی ۳
+- [نمره منفی در آزمون وکالت](https://dadrose.com/negative-marking-in-the-bar-exam/): نحوه محاسبه و تعداد تست مناسب
+- [آزمون وکالت با گواهی موقت](https://dadrose.com/bar-exam-with-a-temporary-graduation-certificate/): امکان ثبت‌نام با گواهی موقت
+- [کارت پایان خدمت برای آزمون وکالت](https://dadrose.com/military-service-completion-card-for-the-bar-exam/): آیا لازم است
+- [آزمون کارآموزی وکالت](https://dadrose.com/lawyer-internship-exam/): وظایف کارآموز و پروانه
+
+## مقالات حقوقی (پرخوانده‌ترین در ۹۰ روز اخیر)
+
+- [مهرالسنه حضرت زهرا (س)](https://dadrose.com/mahr-al-sunnah-or-the-dowry-of-lady-fatimah-al-zahra/): مقدار و نحوه محاسبه قیمت
+- [انواع مهریه](https://dadrose.com/types-of-dowry/): مهرالمسمی، مهرالمثل و مهرالمتعه
+- [نحوه توقیف اموال برای مهریه](https://dadrose.com/how-to-seize-assets-for-dowry/): روند قانونی توقیف
+- [نفقه زن](https://dadrose.com/what-does-a-wifes-maintenance-cover/): موارد نفقه طبق قانون مدنی
+- [استرداد هدایای نامزدی](https://dadrose.com/return-of-engagement-gifts/): شرایط و روش استرداد
+- [پابند الکترونیکی](https://dadrose.com/electronic-cilice-belt/): محدوده، جرایم و شرایط استفاده
+- [عقد صلح چیست؟](https://dadrose.com/what-is-a-peace-contract/): مواد قانون مدنی، صلح معامله‌ای و صلح دعوا
+- [نوشتن قرارداد صلح](https://dadrose.com/writing-a-peace-agreement/): شرایط صحت و شیوه نگارش
+- [دادگاه کیفری ۱ و ۲](https://dadrose.com/criminal-courts-1-and-2/): صلاحیت و تفاوت‌ها
+- [انواع سرقت](https://dadrose.com/types-of-theft/): سرقت حدی و تعزیری در قانون مجازات اسلامی
+- [ادله اثبات دعوی](https://dadrose.com/means-of-proof-in-legal-proceedings/): پنج دلیل در امور حقوقی و کیفری
+- [اتیان سوگند](https://dadrose.com/oath-in-law/): قسم در دادگاه، انواع و شرایط
+- [انواع دعاوی](https://dadrose.com/types-of-litigation/): دعاوی حقوقی، کیفری و اداری و مرجع رسیدگی
+- [فریب در معامله](https://dadrose.com/deception-and-fraud-in-transactions/): شرایط فسخ و شکایت کیفری
+- [وظایف و اختیارات رهبری](https://dadrose.com/the-authority-and-duties-of-the-leader/): اصل ۱۱۰ قانون اساسی
+- [قانون خاص مسئولیت مدنی](https://dadrose.com/special-civil-liability-law/): مواد و نکات تستی
+- [تصادف هنرجوی رانندگی](https://dadrose.com/traffic-accidents/): مسئول پرداخت خسارت کیست
+- [شغل‌های ممنوعه برای زوجین](https://dadrose.com/forbidden-jobs-for-couples/): ممنوعیت شغل همسر
+- [تکلیف خانواده مرد مفقودالاثر](https://dadrose.com/man-missing/): غایب مفقودالاثر
+- [قانون سهم‌الارث فرزندان](https://dadrose.com/inheritance-laws/): ارث دختر و پسر
+- [شکایت از کلاهبرداری اینترنتی](https://dadrose.com/internet-fraud/): ثبت در ثنا و پلیس فتا
+- [رفع سوءاثر چک صیادی](https://dadrose.com/removing-the-adverse-effects-of-a-signed-check/): مدت، مراحل و روش‌ها
+- [تخلیه مستاجر](https://dadrose.com/if-the-tenant-does-not-vacate/): مراحل قانونی تخلیه
+- [وکالت برای زنان](https://dadrose.com/lawyer-career-for-women/): مزایا، معایب، درآمد و شرایط ورود
+- [نحوه مطالعه اصول فقه](https://dadrose.com/how-to-study-the-principles-of-jurisprudence/): روش مطالعه برای آزمون
+- [مطالعه تعزیرات در آزمون وکالت](https://dadrose.com/how-to-study-tazirat-punishments/): بهترین روش مطالعه جزای تعزیرات
+- [تفاوت آزمون وکالت و قضاوت](https://dadrose.com/difference-between-the-bar-exam-and-the-judicial-exam/): کدام سخت‌تر و مناسب‌تر است
+- [دلایل مردودی در آزمون وکالت](https://dadrose.com/reasons-for-failing-the-bar-exam/): شناسایی و رفع اشتباهات
+- [بعد از قبولی وکالت چه کنیم؟](https://dadrose.com/what-should-we-do-after-passing-the-bar-exam/): مراحل پس از قبولی
+
+## Optional
+
+- [بلاگ دادرز](https://dadrose.com/blog/): همه مقالات
+- [نقشه سایت](https://dadrose.com/sitemap_index.xml): فهرست کامل صفحات قابل ایندکس
+- [نقشه سایت مرکز آزمون](https://azmoon.dadrose.com/sitemap.xml): صفحات مرکز آزمون

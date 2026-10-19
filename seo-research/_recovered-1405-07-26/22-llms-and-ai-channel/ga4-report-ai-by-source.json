@@ -1,0 +1,18 @@
+{
+  "_comment": "Works today with no Admin change and is retroactive. Run: python tools/ga4.py report \"$(cat this.json)\" (remove _comment first). Also the fallback if the custom group is never created.",
+  "dateRanges": [{ "startDate": "90daysAgo", "endDate": "yesterday" }],
+  "dimensions": [{ "name": "sessionSource" }, { "name": "landingPagePlusQueryString" }],
+  "metrics": [{ "name": "sessions" }, { "name": "engagedSessions" }, { "name": "keyEvents" }, { "name": "averageSessionDuration" }],
+  "dimensionFilter": {
+    "filter": {
+      "fieldName": "sessionSource",
+      "stringFilter": {
+        "matchType": "PARTIAL_REGEXP",
+        "value": "(chatgpt\\.com|chat\\.openai\\.com|perplexity\\.ai|gemini\\.google\\.com|copilot\\.microsoft\\.com|claude\\.ai|deepseek\\.com|bing\\.com/chat|you\\.com|meta\\.ai)",
+        "caseSensitive": false
+      }
+    }
+  },
+  "orderBys": [{ "metric": { "metricName": "sessions" }, "desc": true }],
+  "limit": 100
+}

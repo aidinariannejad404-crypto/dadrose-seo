@@ -1,0 +1,21 @@
+<?php
+// Paste inside the array returned by dadrose_seo_meta_map() (dadrose-seo-meta.php), before the closing ];
+// If any of these IDs already exists in the live map, REPLACE that entry instead (could not verify live map; no server access).
+// IDs from shortlinks read 2026-10-18: dates 21897, registration 27867, fee 27783, apex 18800.
+// Dates page (21897) intentionally NOT included: live title/description already carry both dates (see phase1.md).
+
+        // /registration-for-the-1405-bar-exam-begins/ | primary query: ثبت نام آزمون وکالت ۱۴۰۵ (CTR 1.0% at pos 6.8)
+        27867 => [
+            'title' => 'ثبت نام آزمون وکالت ۱۴۰۵: شرایط، مدارک و لینک سنجش | دادرز',
+            'description' => 'ثبت‌نام آزمون وکالت ۱۴۰۵ کانون و مرکز وکلا: شرایط، مدارک لازم، مراحل ثبت‌نام در سایت سنجش و پاسخ پرسش‌های رایج داوطلبان.',
+        ],
+        // /bar-exam-fee/ | primary query: هزینه ثبت نام آزمون وکالت ۱۴۰۵ (optional, live is already good)
+        27783 => [
+            'title' => 'هزینه ثبت نام آزمون وکالت ۱۴۰۵ چقدر است؟ کانون و مرکز | دادرز',
+            'description' => 'هزینه ثبت‌نام آزمون وکالت ۱۴۰۵: کانون‌های وکلا ۱٬۴۵۰٬۰۰۰ تومان و مرکز وکلای قوه قضاییه ۱٬۴۹۰٬۰۰۰ تومان؛ روش پرداخت، استرداد و نکات مهم.',
+        ],
+        // /apex/ | primary query: برنامه ریزی آزمون وکالت ۱۴۰۵ (CTR 28%); only removes the doubled brand
+        18800 => [
+            'title' => 'برنامه‌ریزی آزمون وکالت ۱۴۰۵: شیوه اجرای برنامه اپکس | دادرز',
+            'description' => 'برنامه‌ریزی آزمون وکالت ۱۴۰۵ تا روز آزمون: شیوه اجرای برنامه دادرز در دوره اپکس، منابع هر دوره، مرور نهایی و برنامه سه هفته آخر.',
+        ],

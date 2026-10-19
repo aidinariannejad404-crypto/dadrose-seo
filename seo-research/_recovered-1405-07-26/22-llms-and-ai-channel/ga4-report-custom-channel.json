@@ -1,0 +1,13 @@
+{
+  "_comment": "Run AFTER the custom channel group exists. Replace CHANNEL_GROUP_ID with the numeric id from the create response (name: properties/558855395/channelGroups/<ID>). Custom channel groups only apply to data processed after creation in some surfaces, but the Data API evaluates them over the requested range. Remove _comment before sending.",
+  "dateRanges": [{ "startDate": "30daysAgo", "endDate": "yesterday" }],
+  "dimensions": [{ "name": "sessionCustomChannelGroup:CHANNEL_GROUP_ID" }],
+  "metrics": [{ "name": "sessions" }, { "name": "engagedSessions" }, { "name": "keyEvents" }, { "name": "totalUsers" }],
+  "dimensionFilter": {
+    "filter": {
+      "fieldName": "sessionCustomChannelGroup:CHANNEL_GROUP_ID",
+      "stringFilter": { "matchType": "EXACT", "value": "AI Assistants" }
+    }
+  },
+  "limit": 10
+}

@@ -1,0 +1,38 @@
+{
+  "_comment": "POST https://analyticsadmin.googleapis.com/v1alpha/properties/558855395/channelGroups  (scope analytics.edit; the service account is Editor). NOT APPLIED. Rules are evaluated top to bottom, first match wins, so AI Assistants comes first; the remaining rules re-expose GA4's default channels so reports do not collapse into (Other). Remove this _comment key before sending.",
+  "displayName": "Dadrose channels (with AI Assistants)",
+  "description": "Default channels plus a first-match AI Assistants channel for chatbot referrals.",
+  "groupingRule": [
+    {
+      "displayName": "AI Assistants",
+      "expression": {
+        "orGroup": {
+          "filterExpressions": [
+            {
+              "filter": {
+                "fieldName": "eachScopeSource",
+                "stringFilter": {
+                  "matchType": "PARTIAL_REGEXP",
+                  "value": "(chatgpt\\.com|chat\\.openai\\.com|perplexity\\.ai|gemini\\.google\\.com|copilot\\.microsoft\\.com|claude\\.ai|deepseek\\.com|bing\\.com/chat|you\\.com|meta\\.ai)",
+                  "caseSensitive": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    { "displayName": "Direct", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Direct" } } } },
+    { "displayName": "Organic Search", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Organic Search" } } } },
+    { "displayName": "Paid Search", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Paid Search" } } } },
+    { "displayName": "Organic Social", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Organic Social" } } } },
+    { "displayName": "Paid Social", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Paid Social" } } } },
+    { "displayName": "Organic Video", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Organic Video" } } } },
+    { "displayName": "Email", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Email" } } } },
+    { "displayName": "SMS", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "SMS" } } } },
+    { "displayName": "Display", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Display" } } } },
+    { "displayName": "Referral", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Referral" } } } },
+    { "displayName": "Cross-network", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Cross-network" } } } },
+    { "displayName": "Affiliates", "expression": { "filter": { "fieldName": "eachScopeDefaultChannelGroup", "stringFilter": { "matchType": "EXACT", "value": "Affiliates" } } } }
+  ]
+}
